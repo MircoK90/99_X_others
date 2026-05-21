@@ -1,0 +1,14 @@
+[project]
+name = "langchain_cours_mlops"
+version = "0.1.0"
+description = "Langchain course"
+readme = "README.md"
+requires-python = "==3.13.*"
+dependencies = [
+    "langchain==0.3.27",
+    "langchain-community==0.3.27",
+    "langchain-core==0.3.74",
+    "langchain-litellm==0.2.2",
+    "pydantic==2.11.7",
+    "python-dotenv==1.1.1",
+]
