@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - LITELLM_URL=http://litellm:8000
+      - LITELLM_URL=http://litellm:8000/v1
       - MLFLOW_TRACKING_URI=http://mlflow:5000
     depends_on:
       - litellm
@@ -71,6 +71,8 @@ services:
       --backend-store-uri sqlite:///mlflow-data/mlflow.db 
       --default-artifact-root file:///mlflow-data/mlartifacts 
       --serve-artifacts
+      --allowed-hosts mlflow,mlflow:5000,localhost,127.0.0.1,*
+      --cors-allowed-origins *
 
 networks:
   llmops-network:

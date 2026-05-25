@@ -4,7 +4,8 @@ model_list:
   # Kimi model via custom OpenAI provider pointing to Groq API
   - model_name: groq-kimi-primary
     litellm_params:
-      model: moonshotai/kimi-k2-instruct
+  #   model: moonshotai/kimi-k2-instruct
+      model: groq/llama-3.1-8b-instant
       api_key: os.environ/GROQ_API_KEY
       api_base: https://api.groq.com/openai/v1
       custom_llm_provider: openai
@@ -12,7 +13,7 @@ model_list:
   # Backup Groq model with standard Groq provider
   - model_name: groq-llama-backup
     litellm_params:
-      model: groq/llama3-8b-8192
+      model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
       
   # Fallback models

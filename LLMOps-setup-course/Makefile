@@ -24,7 +24,7 @@ setup: ## Copy .env.example to .env if it doesn't exist
 
 start: check-env ## Start all services
 	@echo "${GREEN}Starting LLMOps environment...${RESET}"
-	docker-compose up -d --build
+	docker compose up -d --build
 	@echo "\n${GREEN}Services started successfully!${RESET}"
 	@echo "- API: http://localhost:8000"
 	@echo "- LiteLLM: http://localhost:8001"
@@ -32,38 +32,38 @@ start: check-env ## Start all services
 
 stop: ## Stop all services
 	@echo "${YELLOW}Stopping LLMOps environment...${RESET}"
-	docker-compose stop
+	docker compose stop
 
 restart: stop start ## Restart all services
 
 logs: ## View logs from all services
 	@echo "${YELLOW}Viewing logs (press Ctrl+C to exit)...${RESET}"
-	docker-compose logs -f
+	docker compose logs -f
 
 clean: ## Stop services and remove containers, volumes, and networks
 	@echo "${YELLOW}Cleaning up LLMOps environment...${RESET}"
-	docker-compose down -v --remove-orphans
+	docker compose down -v --remove-orphans
 
 ##@ Testing
 
 test: check-env ## Run integration tests
 	@echo "${GREEN}Running integration tests...${RESET}"
-	docker-compose exec api pytest /app/tests/ -v --cov=app --cov-report=term-missing
+	docker compose exec api pytest /app/tests/ -v --cov=app --cov-report=term-missing
 
 test-watch: check-env ## Run tests in watch mode
 	@echo "${GREEN}Starting test watcher...${RESET}"
-	docker-compose exec api ptw /app/tests/ -- -v --cov=app --cov-report=term-missing
+	docker compose exec api ptw /app/tests/ -- -v --cov=app --cov-report=term-missing
 
 ##@ Code Quality
 
 lint: ## Run code linter
 	@echo "${GREEN}Running code linter...${RESET}"
-	docker-compose exec api flake8 /app/src
+	docker compose exec api flake8 /app/src
 
 format: ## Format code with black and isort
 	@echo "${GREEN}Formatting code...${RESET}"
-	docker-compose exec api black /app/src
-	docker-compose exec api isort /app/src
+	docker compose exec api black /app/src
+	docker compose exec api isort /app/src
 
 ##@ Utils
 
@@ -83,7 +83,7 @@ install-test-deps: ## Install test dependencies
 
 docs: ## Generate API documentation
 	@echo "${GREEN}Generating API documentation...${RESET}"
-	docker-compose exec api python -m pdoc --html -o /app/docs /app/src/api --force
+	docker compose exec api python -m pdoc --html -o /app/docs /app/src/api --force
 
 ##@ Monitoring
 

@@ -1,0 +1,9 @@
+
+# Voulmes cleaning
+docker volume ls --format '{{.Name}}' \
+  | grep -E '^[0-9a-f]{64}$' \
+  | xargs -r docker volume rm
+
+
+# files
+du -ah / 2>/dev/null | sort -rh | head -30
