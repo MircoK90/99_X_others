@@ -16,8 +16,6 @@ COPY src/api/ .
 # Copy tests directory
 COPY tests/ ./tests/
 
-# Copy test traces script
-COPY test_traces.py .
 
 EXPOSE 8000
 

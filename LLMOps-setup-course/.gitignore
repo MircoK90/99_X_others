@@ -200,6 +200,7 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+.windsurf/
 
 # Marimo
 marimo/_static/
@@ -208,6 +209,7 @@ __marimo__/
 
 # Course materials
 courses/
+mlflow-data/** */
 
 # MLflow
 mlflow-data/
